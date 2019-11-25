@@ -12,7 +12,7 @@ $ sudo apt-get install qt5-default qtcreator -y
 
 官方镜像源的速度倒也还不错，大概一分钟，软件安装好，你可以打开菜单来搜索QT看到软件。
 
-![](..\img\1.png)
+![](\img\1.png)
 
 ## 二、配置QT编译环境
 
@@ -24,11 +24,11 @@ Qt Creator -> Tools-> Options-> Build & Run-> Compilers
 
 ##### 1、点击Add，选择GCC编译器
 
-![](..\img\\2.png)
+![](\img\2.png)
 
 ##### 2、修改默认路径
 
-![](D:..\img\3.png)
+![](\img\3.png)
 
 选择默认编译路径，在路径处填写 /usr/bin/gcc
 
@@ -40,13 +40,13 @@ Qt Creator -> Tools-> Options-> Build & Run-> Compilers
 $ custom – arm – linux – generic – elf – 64 bit 
 ```
 
-![](..\img\4.png)
+![](\img\4.png)
 
 ##### 4、修改Kit，更改默认编译器
 
 将系统默认的编译器删除后，点击Add，手动添加新编译器，在Compiler处，点击Manager，配置编译器。
 
-![](..\img\5.png)
+![](\img\5.png)
 
 ## 三、导入QT默认案例（example）
 
