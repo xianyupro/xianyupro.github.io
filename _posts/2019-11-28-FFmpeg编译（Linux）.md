@@ -1,11 +1,14 @@
 # FFmpeg编译（Linux）
 
-FFmpeg作为开源视频处理的集大成者，对于各个平台都是兼容的，由于最近需要在Ubuntu下开发推流程序，而商用的库根本玩不起，所以学习FFmpeg，第一步，安装编译。
+FFmpeg作为开源视频处理的集大成者，对于各个平台都是兼容的，由于最近需要在Ubuntu下开发推流程序，而商用的库根本玩不起，所以学习FFmpeg，第一步，安装编译（
+
+[参考文章]: https://blog.csdn.net/xIsidro9293/article/details/53097949
+
+：）。
 
 ## 一、下载
 
 获取FFmpeg源码，可以到官网上直接下载，也可以使用Git命令从Git仓库下载。
-
 **下载：**
        地址： http://ffmpeg.org/download.html   下载最新版本
        解压缩：tar -zxvf ffmp..
@@ -22,7 +25,7 @@ $ sudo git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg
 
 ## 二、编译
 
-##### **1、配置  configure** 
+##### 1、配置  configure 
 
 使用cd命令进入ffmpeg文件夹中，对configure文件进行配置。
 
@@ -48,13 +51,13 @@ $ sudo apt install yasm
 
 当然，你也可以参照ffmpeg功能清单去掉不必要的功能减少库的体积，定制自己的ffmpeg，这样可以减少内存的占用。
 
-##### **2、编译**
+##### 2、编译
 
 ```sh
 $ make
 ```
 
-##### **3、编译安装**
+##### 3、编译安装
 
 ```sh
 $ make install
@@ -286,3 +289,28 @@ LANGUGE 　              语言相关的环境变量，多语言可以修改此�
 MAIL                        　当前用户的邮件存放目录 
 PS1　                          基本提示符，对于root用户是#，对于普通用户是$
 LD_LIBRARY_PATH    主要用于指定查找共享库（动态链接库）时除了默认路径之外的其他路径。 
+
+## 五、问题
+
+这里整理一些在使用ffmpeg开发过程中还会遇到的问题
+
+#### 1、error while loading shared libraries 问题总结
+
+报错的原因在于编译过程中ld找不到库文件，ld查找库文件的默认路径在  /lib和/usr/lib 中，如果找不到将会报错，可以通过手动添加库文件路径进行解决问题。
+
+共享文件路径添加：
+
+打开 ld.so.conf 添加对应ffmpeg中lib的位置，重新刷新配置，具体代码为，
+
+```sh
+$ sudo vi /etc/ld.so.conf 
+```
+
+```sh
+ /usr/local/ffmpeg/lib  
+```
+
+```sh
+$ sudo ldconfig
+```
+
