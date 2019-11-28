@@ -1,14 +1,11 @@
 # FFmpeg编译（Linux）
 
-FFmpeg作为开源视频处理的集大成者，对于各个平台都是兼容的，由于最近需要在Ubuntu下开发推流程序，而商用的库根本玩不起，所以学习FFmpeg，第一步，安装编译（
-
-[参考文章]: https://blog.csdn.net/xIsidro9293/article/details/53097949
-
-：）。
+FFmpeg作为开源视频处理的集大成者，对于各个平台都是兼容的，由于最近需要在Ubuntu下开发推流程序，而商用的库根本玩不起，所以学习FFmpeg，第一步，安装编译。
 
 ## 一、下载
 
 获取FFmpeg源码，可以到官网上直接下载，也可以使用Git命令从Git仓库下载。
+
 **下载：**
        地址： http://ffmpeg.org/download.html   下载最新版本
        解压缩：tar -zxvf ffmp..
@@ -25,7 +22,7 @@ $ sudo git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg
 
 ## 二、编译
 
-##### 1、配置  configure 
+##### **1、配置  configure** 
 
 使用cd命令进入ffmpeg文件夹中，对configure文件进行配置。
 
@@ -51,13 +48,13 @@ $ sudo apt install yasm
 
 当然，你也可以参照ffmpeg功能清单去掉不必要的功能减少库的体积，定制自己的ffmpeg，这样可以减少内存的占用。
 
-##### 2、编译
+##### **2、编译**
 
 ```sh
 $ make
 ```
 
-##### 3、编译安装
+##### **3、编译安装**
 
 ```sh
 $ make install
