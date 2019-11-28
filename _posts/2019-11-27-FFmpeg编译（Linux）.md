@@ -9,6 +9,7 @@ FFmpeg作为开源视频处理的集大成者，对于各个平台都是兼容�
 ## 一、下载
 
 获取FFmpeg源码，可以到官网上直接下载，也可以使用Git命令从Git仓库下载。
+<<<<<<< HEAD
 **下载：**
        地址： http://ffmpeg.org/download.html   下载最新版本
        解压缩：tar -zxvf ffmp..
@@ -21,6 +22,18 @@ FFmpeg作为开源视频处理的集大成者，对于各个平台都是兼容�
 $ sudo apt install git
 $ sudo git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg
 ```
+=======
+下载：
+       地址： http://ffmpeg.org/download.html   下载最新版本
+       解压缩：tar -zxvf ffmp..
+
+克隆：
+
+​      在使用克隆之前你应该做到如何使用Git工具，起码需要知道怎么安装它，可以使用下面命令。
+
+    $ sudo apt install git
+    $ sudo git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg
+>>>>>>> 410d015905d65e4c65013edd4e3159830cfce1c2
 注：Git下载后在你 /home/xianyu 目录下的ffmpeg文件夹中。
 
 ## 二、编译
@@ -36,16 +49,27 @@ $ ./configure --enable-shared --disable-yasm --prefix=/usr/local/ffmpeg
 
 对其中参数进行解释为：
 
+<<<<<<< HEAD
 --enable-shared                          编译共享库
 --disable-yasm                            不使用yasm ，默认使用yasm配置会很麻烦,需要下载yasm
 
 该命令可以考虑不使用，使用apt安装yasm相对来说比较方便，对应代码为：
+=======
+--enable-shared     >>  编译共享库
+--disable-yasm       >> 不使用yasm ，默认使用yasm配置会很麻烦,需要下载yasm
+
+【该命令可以考虑不使用，使用apt安装yasm相对来说比较方便，对应代码为：】
+>>>>>>> 410d015905d65e4c65013edd4e3159830cfce1c2
 
 ```sh
 $ sudo apt install yasm
 ```
 
+<<<<<<< HEAD
 --prefix=/usr/local/ffmpeg        编译完成后输出我们要用的文件路径
+=======
+--prefix=/usr/local/ffmpeg     >> 编译完成后输出我们要用的文件路径
+>>>>>>> 410d015905d65e4c65013edd4e3159830cfce1c2
 
 这种为最简化的配置方式，编译出来的库也最大，推荐新手使用，可以确保你在使用过程中不会莫名其妙缺失某个库。
 
@@ -67,6 +91,7 @@ $ make install
 
 你在安装完成后能在/usr/local/ffmpeg/路径下找到 include里的头文件 和 lib里的.so文件  
 
+<<<<<<< HEAD
 ## 三、检查FFmpeg完整性
 
 出于未知原因，使用上述方法安装的FFmpeg包并不完整，在/usr/local/ffmpeg/bin目录下缺失ffplay的文件。如果需要ffplay文件，还需要执行一下操作。**（不需要请忽略这一步）**
@@ -104,6 +129,9 @@ $ make install
  这样就会在/home/xianyu/ffmpeg/host/bin目录下生成ffplay了 
 
 ## 四、使用FFMPEG
+=======
+## 三、使用FFMPEG
+>>>>>>> 410d015905d65e4c65013edd4e3159830cfce1c2
 
  上面我们编译完了FFMPEG之后可以去运行以下bin目录下生成的可执行文件 
 
@@ -160,6 +188,7 @@ linux-vdso.so.1 =>  (0x00007ffeeb6fc000)
 
 ```
 
+<<<<<<< HEAD
 应该注意的是，这种添加环境变量的方法只针对于当前终端，终端关闭后或者另一个终端都是无效的。
 
 经常需要使用的话可以将FFmpeg加入环境变量：
@@ -289,3 +318,6 @@ LANGUGE 　              语言相关的环境变量，多语言可以修改此�
 MAIL                        　当前用户的邮件存放目录 
 PS1　                          基本提示符，对于root用户是#，对于普通用户是$
 LD_LIBRARY_PATH    主要用于指定查找共享库（动态链接库）时除了默认路径之外的其他路径。 
+=======
+当然，应该注意的是，这种添加环境变量的方法只针对于当前终端，终端关闭后或者另一个终端都是无效的。
+>>>>>>> 410d015905d65e4c65013edd4e3159830cfce1c2
