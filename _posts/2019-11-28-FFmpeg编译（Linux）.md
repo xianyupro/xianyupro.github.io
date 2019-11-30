@@ -25,6 +25,42 @@ $ sudo git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg
 
 ## 二、编译
 
+##### [ADD]、安装前的一些步骤
+
+在使用过程中遇到了一些ffmpeg的问题，所以添加这一段，避免下次继续发错
+
+> H264解码器的安装
+
+Ubuntu的原生系统中并没有该解码器，在ffmpeg使用过程中如推流、读流的过程中是需要用到它的，所以在编译过程前需要安装好，下面为安装代码：
+
+```sh
+#下载H264库文件
+git clone http://git.videolan.org/git/x264.git
+#安装
+cd x264
+sudo ./configure --enable-shared --disable-asm --prefix=/usr/local/H264
+sudo make 
+sudo make install
+#添加环境变量
+export PKG_CONFIG_PATH=/usr/local/H264/lib/pkgconfig:$PKG_CONFIG_PATH
+echo $PKG_CONFIG_PATH
+```
+
+[注：环境变量PKG_CONFIG_PATH是用来设置.pc文件的搜索路径的，pkg-config按照设置路径的先后顺序进行搜索，直到找到指定的.pc 文件为止。这样，库的头文件的搜索路径的设置实际上就变成了对.pc文件搜索路径的设置。在安装完一个需要使用的库后，比如Glib，一是将相应的.pc文件，如glib-2.0.pc拷贝到/usr/lib/pkgconfig目录下，二是通过设置环境变量PKG_CONFIG_PATH添加glib-2.0.pc文件的搜索路径。]
+
+> ffplay生成
+
+ffplay是ffmpeg中用来读取视频流的，但原生系统中缺失DL2库文件，所以在编译过程中并不能生成，如果需要电话应该手动安装库文件。在第三节中有写到。
+
+```sh
+$ wget http://www.libsdl.org/release/SDL2-2.0.5.zip
+$ unzip SDL2-2.0.5.zip
+$ cd SDL2-2.0.5/
+$ ./configure --prefix=/usr/local/
+$ make
+$ sudo make install
+```
+
 ##### 1、配置  configure 
 
 使用cd命令进入ffmpeg文件夹中，对configure文件进行配置。
@@ -68,6 +104,8 @@ $ make install
 你在安装完成后能在/usr/local/ffmpeg/路径下找到 include里的头文件 和 lib里的.so文件  
 
 ## 三、检查FFmpeg完整性
+
+如果你在第二部分严格安装操作安装SDL2，那这一部分对于你来说是不需要的。
 
 出于未知原因，使用上述方法安装的FFmpeg包并不完整，在/usr/local/ffmpeg/bin目录下缺失ffplay的文件。如果需要ffplay文件，还需要执行一下操作。**（不需要请忽略这一步）**
 
