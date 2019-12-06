@@ -67,7 +67,7 @@ $ sudo make install
 
 ```sh
 $ cd ffmpeg
-$ ./configure --enable-shared --disable-yasm --prefix=/usr/local/ffmpeg
+$ sudo ./configure --enable-libx264 --enable-swscale --enable-avresample --enable-gpl --enable-shared --prefix=/usr/local/ffmpeg
 ```
 
 对其中参数进行解释为：
